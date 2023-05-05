@@ -35,7 +35,7 @@ jobs:
       - run: env PYTHON_CONFIGURE_OPTS="--enable-shared" pyenv install 3.9.1 -f
       - run: pip3 install -r requirements.txt
       - run: pip3 install pyinstaller
-      - run: pyinstaller -F ./src/bootloader-3.py
+      - run: pyinstaller build.spec
       - run: python3 ./tools/ci_notify.py
 
 # Invoke jobs via workflows
