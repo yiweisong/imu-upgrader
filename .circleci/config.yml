@@ -31,11 +31,9 @@ jobs:
     steps:
       - checkout
       - python/install-packages:
-          pkg-manager: pip
-      - run: env PYTHON_CONFIGURE_OPTS="--enable-shared"
-      - run: pip3 install -r requirements.txt
+          pkg-manager: pip3
       - run: pip3 install pyinstaller
-      - run: pyinstaller build.spec
+      - run: pyinstaller -F ./src/bootloader-3.py
       - run: python3 ./tools/ci_notify.py
 
 # Invoke jobs via workflows
