@@ -1,0 +1,19 @@
+language: python
+jobs:
+  include:
+    - name: "Python 3.8.0 on Bionic Beaver Linux"
+      dist: bionic
+      arch: arm64
+      python: 3.8 # this works for Linux but is ignored on macOS or Windows
+branches:
+  only:
+    - main
+
+install:
+  - pip3 install --upgrade pip # all three OSes agree about 'pip3'
+  - pip3 install -r requirements.txt
+  - pip3 install pyinstaller
+
+script:
+  - pyinstaller build.spec
+  - python3 ./tools/ci_notify.py
