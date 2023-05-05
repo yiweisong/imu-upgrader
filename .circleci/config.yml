@@ -31,7 +31,7 @@ jobs:
     steps:
       - checkout
       - python/install-packages:
-          pkg-manager: pip3
+          pkg-manager: pip
       - run: pip3 install pyinstaller
       - run: pyinstaller -F ./src/bootloader-3.py
       - run: python3 ./tools/ci_notify.py
